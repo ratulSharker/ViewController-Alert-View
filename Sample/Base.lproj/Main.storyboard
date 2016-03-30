@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XZv-UW-9hi">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Direct ViewController-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="DirectVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rW9-O9-YTg">
+                                <rect key="frame" x="173" y="285" width="254" height="30"/>
+                                <color key="backgroundColor" red="0.0078431372550000003" green="0.66666666669999997" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Show Alert On Top Of ViewController">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onShowCustomAlert:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zFW-sq-7yp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cx6-wE-F1U">
+                                <rect key="frame" x="201" y="323" width="198" height="30"/>
+                                <color key="backgroundColor" red="0.0078431372550000003" green="0.66666666669999997" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Show Alert On Top of Tabbar">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onShowOnTopOfTabbar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zBQ-Il-oiy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WCM-Kt-huH">
+                                <rect key="frame" x="420" y="72" width="160" height="30"/>
+                                <color key="backgroundColor" red="0.0078431372550000003" green="0.66666666669999997" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Push A VC on Root Nav">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onPushAVCOnRootNavPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8Te-QI-bpo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="WCM-Kt-huH" secondAttribute="trailing" id="1dl-9E-unx"/>
+                            <constraint firstItem="rW9-O9-YTg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Def-iL-cUg"/>
+                            <constraint firstItem="cx6-wE-F1U" firstAttribute="top" secondItem="rW9-O9-YTg" secondAttribute="bottom" constant="8" id="Hlh-Xb-OkB"/>
+                            <constraint firstItem="cx6-wE-F1U" firstAttribute="centerX" secondItem="rW9-O9-YTg" secondAttribute="centerX" id="SAY-XJ-m7p"/>
+                            <constraint firstItem="WCM-Kt-huH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="mhb-bh-E1n"/>
+                            <constraint firstItem="rW9-O9-YTg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ogf-3y-gMM"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Direct ViewController" id="ZT0-kz-PxM"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="974" y="-583"/>
+        </scene>
+        <!--Navigation inside the tabbar-->
+        <scene sceneID="Ndg-IF-1xf">
+            <objects>
+                <navigationController id="UNb-EP-tmi" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Navigation inside the tabbar" id="b57-dl-wbn"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="umO-04-sok">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="4FK-1K-mM3" kind="relationship" relationship="rootViewController" id="Plh-6D-J1i"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hEw-qy-Pew" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="974" y="133"/>
+        </scene>
+        <!--First VC-->
+        <scene sceneID="uZx-1m-E7a">
+            <objects>
+                <viewController id="4FK-1K-mM3" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Loo-Gk-98e"/>
+                        <viewControllerLayoutGuide type="bottom" id="mUG-NJ-Fym"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bfE-QV-Qol">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Spa-aM-JoU">
+                                <rect key="frame" x="508" y="72" width="72" height="30"/>
+                                <color key="backgroundColor" red="0.0078431372550000003" green="0.66666666669999997" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Push A VC">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="f2E-fV-xkK" kind="push" id="x17-ji-YjB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9J-nI-O3k">
+                                <rect key="frame" x="491" y="110" width="89" height="30"/>
+                                <color key="backgroundColor" red="0.0078431372550000003" green="0.66666666669999997" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Present a VC">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="a80-TC-pzv" kind="popoverPresentation" popoverAnchorView="b9J-nI-O3k" id="PQ3-fh-SjZ">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Spa-aM-JoU" firstAttribute="top" secondItem="Loo-Gk-98e" secondAttribute="bottom" constant="8" id="7ti-TH-Bwu"/>
+                            <constraint firstItem="b9J-nI-O3k" firstAttribute="top" secondItem="Spa-aM-JoU" secondAttribute="bottom" constant="8" id="Itq-8q-gow"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="b9J-nI-O3k" secondAttribute="trailing" id="KaO-Mx-qXC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Spa-aM-JoU" secondAttribute="trailing" id="VY1-fp-MTX"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Inside a navigation" id="rzM-4g-day"/>
+                    <navigationItem key="navigationItem" title="First VC" id="uDU-wD-ZVb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bhS-yI-Yeg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1733" y="133"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kRr-Hq-xkd">
+            <objects>
+                <navigationController id="a80-TC-pzv" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="J9s-v2-3lr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="U9A-hS-SiT" kind="relationship" relationship="rootViewController" id="qjh-Dl-f3f"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eq5-So-ejI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1733" y="977"/>
+        </scene>
+        <!--Presented VC-->
+        <scene sceneID="WSt-2B-eUz">
+            <objects>
+                <viewController id="U9A-hS-SiT" customClass="PresentedVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tI9-ab-AMt"/>
+                        <viewControllerLayoutGuide type="bottom" id="VSG-2t-gEH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gFQ-Qp-MIl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R6f-Nr-LMl">
+                                <rect key="frame" x="202" y="285" width="197" height="30"/>
+                                <color key="backgroundColor" red="0.0078431372550000003" green="0.66666666669999997" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Show on top of presented vc">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onShowOnTopOfPresentedVCPressed:" destination="U9A-hS-SiT" eventType="touchUpInside" id="I4d-Cs-G5J"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BW3-er-OL4">
+                                <rect key="frame" x="156" y="323" width="289" height="30"/>
+                                <color key="backgroundColor" red="0.0078431372550000003" green="0.66666666669999997" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Show on top of navigation of presented vc">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onShowOnTopOfNavigationOfPresentedVCPressed:" destination="U9A-hS-SiT" eventType="touchUpInside" id="lja-NX-3ZY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="R6f-Nr-LMl" firstAttribute="centerX" secondItem="gFQ-Qp-MIl" secondAttribute="centerX" id="ChL-6w-aRp"/>
+                            <constraint firstItem="BW3-er-OL4" firstAttribute="centerX" secondItem="R6f-Nr-LMl" secondAttribute="centerX" id="WIz-SI-Rc1"/>
+                            <constraint firstItem="BW3-er-OL4" firstAttribute="top" secondItem="R6f-Nr-LMl" secondAttribute="bottom" constant="8" id="Zqo-Cf-yld"/>
+                            <constraint firstItem="R6f-Nr-LMl" firstAttribute="centerY" secondItem="gFQ-Qp-MIl" secondAttribute="centerY" id="kek-KY-pwx"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Presented VC" id="aCn-wC-jfg">
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="lOD-ib-4Tg">
+                            <connections>
+                                <action selector="onDonePressed:" destination="U9A-hS-SiT" id="C1M-dK-0Gn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tOa-4o-J5b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2610" y="977"/>
+        </scene>
+        <!--Pushed VC-->
+        <scene sceneID="IEn-No-0kG">
+            <objects>
+                <viewController id="f2E-fV-xkK" customClass="PushedVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2ej-aw-KEf"/>
+                        <viewControllerLayoutGuide type="bottom" id="eRU-ra-5aX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Nmn-Ez-iVd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wgC-q9-LJf">
+                                <rect key="frame" x="207" y="285" width="186" height="30"/>
+                                <color key="backgroundColor" red="0.0078431372550000003" green="0.66666666669999997" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Show on Top of pushed VC">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showOnTopOfPushedVCPressed:" destination="f2E-fV-xkK" eventType="touchUpInside" id="Cte-ef-OtL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHd-zg-H0u">
+                                <rect key="frame" x="162" y="323" width="276" height="30"/>
+                                <color key="backgroundColor" red="0.0078431372550000003" green="0.66666666669999997" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Show on Top of Navigation of pushed vc">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showOnTopOfNavigationOfPushedVCPressed:" destination="f2E-fV-xkK" eventType="touchUpInside" id="nL8-81-ga9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybA-AE-WAQ">
+                                <rect key="frame" x="184" y="361" width="233" height="30"/>
+                                <color key="backgroundColor" red="0.0078431372550000003" green="0.66666666669999997" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Show on Top Of Tabbar Controller">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showOnTopOfTabbarControllerPressed:" destination="f2E-fV-xkK" eventType="touchUpInside" id="6vA-2K-bvW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wgC-q9-LJf" firstAttribute="centerX" secondItem="Nmn-Ez-iVd" secondAttribute="centerX" id="OCn-fX-ejC"/>
+                            <constraint firstItem="yHd-zg-H0u" firstAttribute="top" secondItem="wgC-q9-LJf" secondAttribute="bottom" constant="8" id="aUW-j5-vIr"/>
+                            <constraint firstItem="wgC-q9-LJf" firstAttribute="centerY" secondItem="Nmn-Ez-iVd" secondAttribute="centerY" id="f0E-yL-AjD"/>
+                            <constraint firstItem="yHd-zg-H0u" firstAttribute="centerX" secondItem="wgC-q9-LJf" secondAttribute="centerX" id="kfY-ta-0UD"/>
+                            <constraint firstItem="ybA-AE-WAQ" firstAttribute="top" secondItem="yHd-zg-H0u" secondAttribute="bottom" constant="8" id="rcN-YS-sS9"/>
+                            <constraint firstItem="ybA-AE-WAQ" firstAttribute="centerX" secondItem="yHd-zg-H0u" secondAttribute="centerX" id="zRB-6f-MsO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Pushed VC" id="DCH-Ir-GQq"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KYr-FB-2ed" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2610" y="133"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="AoT-WQ-iOS">
+            <objects>
+                <tabBarController id="37f-AH-002" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="b1f-hv-PeJ"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="Rpg-44-SPG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="L90-4U-Oky"/>
+                        <segue destination="UNb-EP-tmi" kind="relationship" relationship="viewControllers" id="3zW-Oo-5zR"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7CI-zC-N8N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="157" y="-223"/>
+        </scene>
+        <!--Root pushed VC-->
+        <scene sceneID="l7Q-5i-0tY">
+            <objects>
+                <viewController storyboardIdentifier="on_root_push_vc" title="Root pushed VC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bCr-B7-3V2" customClass="RootPushedVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ehl-Nr-7Pw"/>
+                        <viewControllerLayoutGuide type="bottom" id="YpS-or-O8T"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iVw-ZZ-aVP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvx-jh-v4H">
+                                <rect key="frame" x="172" y="285" width="257" height="30"/>
+                                <color key="backgroundColor" red="0.0078431372550000003" green="0.66666666669999997" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Show alert on Top of Root pushed VC">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onShowAlertOnTopRootVCPressed:" destination="bCr-B7-3V2" eventType="touchUpInside" id="S1X-eE-TiO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hwO-3h-pKh">
+                                <rect key="frame" x="196" y="323" width="208" height="30"/>
+                                <color key="backgroundColor" red="0.0078431372550000003" green="0.66666666669999997" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Show alert on Top of Root Nav">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onShowAlertOnTopRootNavPressed:" destination="bCr-B7-3V2" eventType="touchUpInside" id="VHu-1X-MJ1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qvx-jh-v4H" firstAttribute="centerX" secondItem="iVw-ZZ-aVP" secondAttribute="centerX" id="0MC-E7-QH2"/>
+                            <constraint firstItem="hwO-3h-pKh" firstAttribute="centerX" secondItem="iVw-ZZ-aVP" secondAttribute="centerX" id="0RG-ia-9Eb"/>
+                            <constraint firstItem="hwO-3h-pKh" firstAttribute="top" secondItem="qvx-jh-v4H" secondAttribute="bottom" constant="8" id="RU0-JP-YX2"/>
+                            <constraint firstItem="qvx-jh-v4H" firstAttribute="centerY" secondItem="iVw-ZZ-aVP" secondAttribute="centerY" id="auK-2T-F34"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lgB-lh-TFh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="149" y="676"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mcD-0H-y9Q">
+            <objects>
+                <navigationController id="XZv-UW-9hi" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lI8-9e-sIP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="37f-AH-002" kind="relationship" relationship="rootViewController" id="tpm-gX-v98"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b0o-jG-e5f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-572" y="-316"/>
+        </scene>
+    </scenes>
+</document>
