@@ -10,10 +10,18 @@
 
 @class ViewControllerAlertView;
 
+enum PREDEFINED_ANIMATION
+{
+    SHOW_WITH_DAMPING,
+    HIDE_WITH_DAMPING,
+    
+    SHOW_WITH_FADE_IN,
+    HIDE_WITH_FADE_OUT
+    
+};
+
 @protocol ViewControllerAlertViewDelegate <NSObject>
-
 @optional
-
 -(void)viewControllerAlertViewWillAppear:(ViewControllerAlertView*)vcav;
 -(void)viewControllerAlertViewDidAppear:(ViewControllerAlertView*)vcav;
 -(void)viewControllerAlertViewWillDisappear:(ViewControllerAlertView*)vcav;
