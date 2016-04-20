@@ -39,19 +39,19 @@
 -(IBAction)showOnTopOfPushedVCPressed:(id)sender
 {
     CustomAlert *myAlert = (CustomAlert*) [CustomAlert makeAnAlert:@"custom_alert"];
-    [myAlert showOn:self];
+    [myAlert showOn:self WithAnimation:SHOW_WITH_DAMPING];
 }
 
 -(IBAction)showOnTopOfNavigationOfPushedVCPressed:(id)sender
 {
     CustomAlert *myAlert = (CustomAlert*) [CustomAlert makeAnAlert:@"custom_alert"];
-    [myAlert showOn:self.parentViewController];
+    [myAlert showOn:self.parentViewController WithAnimation:SHOW_WITH_DAMPING];
 }
 
 -(IBAction)showOnTopOfTabbarControllerPressed:(id)sender
 {
     CustomAlert *myAlert = (CustomAlert*) [CustomAlert makeAnAlert:@"custom_alert"];
-    [myAlert showOn:self.parentViewController.parentViewController];
+    [myAlert showOn:self.parentViewController.parentViewController WithAnimation:SHOW_WITH_DAMPING];
 }
 
 @end

@@ -45,13 +45,13 @@
 -(IBAction)onShowAlertOnTopRootVCPressed:(id)sender
 {
     CustomAlert *customAlert = (CustomAlert*)[CustomAlert makeAnAlert:@"custom_alert"];
-    [customAlert showOn:self];
+    [customAlert showOn:self WithAnimation:SHOW_WITH_DAMPING];
 }
 
 -(IBAction)onShowAlertOnTopRootNavPressed:(id)sender
 {
     CustomAlert *customAlert = (CustomAlert*)[CustomAlert makeAnAlert:@"custom_alert"];
-    [customAlert showOn:self.parentViewController];
+    [customAlert showOn:self.parentViewController WithAnimation:SHOW_WITH_DAMPING];
 }
 
 @end

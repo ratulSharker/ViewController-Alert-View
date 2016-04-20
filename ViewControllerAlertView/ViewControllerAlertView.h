@@ -16,16 +16,17 @@ enum PREDEFINED_ANIMATION
     HIDE_WITH_DAMPING,
     
     SHOW_WITH_FADE_IN,
-    HIDE_WITH_FADE_OUT
-    
+    HIDE_WITH_FADE_OUT,
 };
+
+typedef void (^ViewControllerAlertViewCompletionBlok)();
 
 @protocol ViewControllerAlertViewDelegate <NSObject>
 @optional
--(void)viewControllerAlertViewWillAppear:(ViewControllerAlertView*)vcav;
--(void)viewControllerAlertViewDidAppear:(ViewControllerAlertView*)vcav;
--(void)viewControllerAlertViewWillDisappear:(ViewControllerAlertView*)vcav;
--(void)viewControllerAlertViewDiddisappear:(ViewControllerAlertView*)vcav;
+-(void)viewControllerAlertViewWillAppear    :(ViewControllerAlertView*)vcav;
+-(void)viewControllerAlertViewDidAppear     :(ViewControllerAlertView*)vcav;
+-(void)viewControllerAlertViewWillDisappear :(ViewControllerAlertView*)vcav;
+-(void)viewControllerAlertViewDiddisappear  :(ViewControllerAlertView*)vcav;
 
 @end
 
@@ -35,8 +36,14 @@ enum PREDEFINED_ANIMATION
 
 +(ViewControllerAlertView*)makeAnAlert:(NSString*)storyboardName;
 
--(void)showOn:(UIViewController*)alertHolder;
 
--(void)hide;
--(void)hide:(void (^)(void)) completion;
+-(void)showOn:(UIViewController*)alertHolder WithAnimation:(enum PREDEFINED_ANIMATION)anim;
+
+
+-(void)hideWithAnimation:(enum PREDEFINED_ANIMATION)anim
+              onComplete:(ViewControllerAlertViewCompletionBlok) completion;
+
+-(void)hideAutomaticallyAfter:(NSTimeInterval)hidingTime
+                withAnimation:(enum PREDEFINED_ANIMATION)anim
+                   onComplete:(ViewControllerAlertViewCompletionBlok)completion;
 @end

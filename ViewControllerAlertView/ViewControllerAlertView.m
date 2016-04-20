@@ -8,7 +8,8 @@
 
 #import "ViewControllerAlertView.h"
 
-
+#define VIEWCONTROLLER_TIMER_USERINFO_ANIMATION_KEY     @"timer.animation.key"
+#define VIEWCONTROLLER_TIMER_USERINFO_COMPLETION_KEY    @"timer.completion.key"
 
 @interface ViewControllerAlertView ()
 
@@ -18,6 +19,14 @@
 @implementation ViewControllerAlertView
 {
     UIViewController *currentAlertHolder;
+    
+    
+    //
+    //
+    //
+    //
+    //enum PREDEFINED_ANIMATION anim;
+    
 }
 
 #pragma mark life-cycle methods
@@ -43,7 +52,7 @@
     return (ViewControllerAlertView*)[storyboard instantiateInitialViewController];
 }
 
--(void)showOn:(UIViewController*)alertHolder
+-(void)showOn:(UIViewController*)alertHolder WithAnimation:(enum PREDEFINED_ANIMATION)anim
 {
     //call delegate that this view controller is about to show
     if(self.vcavDelegate &&
@@ -63,23 +72,66 @@
         [super viewWillAppear:YES];
     }
         
-    
-    //[self showOnWithDamping:alertHolder];
-    
-    [self showOnWithFadeIn:alertHolder];
+    switch(anim)
+    {
+        case SHOW_WITH_DAMPING:
+        {
+            [self showOnWithDamping:alertHolder];
+        }
+            break;
+        case SHOW_WITH_FADE_IN:
+        {
+            [self showOnWithFadeIn:alertHolder];
+        }
+            break;
+            
+        case HIDE_WITH_DAMPING:
+        case HIDE_WITH_FADE_OUT:
+        default:
+        {
+            NSLog(@"WRONG ANIMATION PARAMTER PASSED");
+        }
+    }
     
 }
 
--(void)hide
+-(void)hideWithAnimation:(enum PREDEFINED_ANIMATION)anim
+              onComplete:(ViewControllerAlertViewCompletionBlok)completion
 {
-    [self hide:nil];
+    switch(anim)
+    {
+        case HIDE_WITH_DAMPING:
+        {
+            [self hideWithDampingWithCompletion:completion];
+        }
+            break;
+        case HIDE_WITH_FADE_OUT:
+        {
+            [self hideWithFadeOut:completion];
+        }
+            break;
+            
+        case SHOW_WITH_DAMPING:
+        case SHOW_WITH_FADE_IN:
+        default:
+        {
+            NSLog(@"WRONG ANIMATION PARAMTER PASSED");
+        }
+    }
 }
 
--(void)hide:(void (^)(void)) completion
+-(void)hideAutomaticallyAfter:(NSTimeInterval)hidingTime
+                withAnimation:(enum PREDEFINED_ANIMATION)anim
+                   onComplete:(ViewControllerAlertViewCompletionBlok)completion
 {
-    //[self hideWithDampingWithCompletion:completion];
-    
-    [self hideWithFadeOut:completion];
+    [NSTimer scheduledTimerWithTimeInterval:hidingTime
+                                     target:self
+                                   selector:@selector(hidingTimerExpired:)
+                                   userInfo:@{
+                                                VIEWCONTROLLER_TIMER_USERINFO_ANIMATION_KEY: [NSNumber numberWithInt:anim],
+                                                VIEWCONTROLLER_TIMER_USERINFO_COMPLETION_KEY : completion
+                                              }
+                                    repeats:NO];
 }
 
 /*
@@ -222,7 +274,6 @@
 
 -(void)hideWithFadeOut:(void(^)(void))completion
 {
-    
     if(currentAlertHolder)
     {
         //call delegate that this view controller is about to hide
@@ -264,37 +315,23 @@
     }
 }
 
--(void)showOnWithProgressiveCircularOut:(UIViewController*)alertHolder
+#pragma mark Timer helper
+-(void)hidingTimerExpired:(NSTimer*)timer
 {
-    //set initial frame
-    CGRect originalFrame = self.view.frame;
+    if(timer &&
+       timer.userInfo)
+    {
+        
+        enum PREDEFINED_ANIMATION anim = [timer.userInfo[VIEWCONTROLLER_TIMER_USERINFO_ANIMATION_KEY] intValue];
+        ViewControllerAlertViewCompletionBlok completionBlock = timer.userInfo[VIEWCONTROLLER_TIMER_USERINFO_COMPLETION_KEY];
+        
+        //  now time to hide
+        [self hideWithAnimation:anim onComplete:completionBlock];
     
-    self.view.frame = originalFrame;
-    self.view.backgroundColor = [UIColor colorWithRed:50.0/255.0
-                                                green:50.0/255.0
-                                                 blue:50.0/255.0
-                                                alpha:0.85];
-    self.view.alpha = 1.0;
-    self.view.clipsToBounds = YES;
-    self.view.layer.cornerRadius = 0.0;
-    [alertHolder.view addSubview:self.view];
-    
-    [UIView animateWithDuration:1.0
-                     animations:^{
-                         
-                         self.view.layer.cornerRadius = MAX(self.view.frame.size.width, self.view.frame.size.height);
-                         
-                     } completion:^(BOOL finshed){
-                         //call delegate that this view controller is shown
-                         
-                         if(self.vcavDelegate &&
-                            [self.vcavDelegate respondsToSelector:(@selector(viewControllerAlertViewDidAppear:))]
-                            )
-                         {
-                             [self.vcavDelegate viewControllerAlertViewDidAppear:self];
-                             
-                         }
-                     }];
+        //  get rid of the timer
+        [timer invalidate];
+        timer = nil;
+    }
 }
 
 @end

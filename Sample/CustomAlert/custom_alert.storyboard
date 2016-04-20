@@ -28,33 +28,36 @@
                                     <action selector="onDismissPressed:" destination="PXz-wK-jXJ" eventType="touchUpInside" id="nVx-6h-uqP"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="This is a sample Custom Alertview" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4i9-Js-HJ6">
-                                <rect key="frame" x="128" y="48" width="344" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a sample Custom Alertview" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4i9-Js-HJ6">
+                                <rect key="frame" x="169" y="48" width="262" height="21"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="262" id="xcL-Yo-eh5"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.86435612419999996" green="0.0" blue="0.13226195469999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2i8-gH-yig">
-                                <rect key="frame" x="276" y="86" width="51" height="31"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2i8-gH-yig">
+                                <rect key="frame" x="276" y="77" width="51" height="31"/>
                                 <connections>
                                     <action selector="onSwitchValueChanged:" destination="PXz-wK-jXJ" eventType="touchUpInside" id="YoP-Ul-DaM"/>
                                 </connections>
                             </switch>
-                            <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="pUj-7o-KOu">
-                                <rect key="frame" x="18" y="125" width="564" height="31"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="pUj-7o-KOu">
+                                <rect key="frame" x="18" y="116" width="564" height="31"/>
                                 <connections>
                                     <action selector="onSliderValueChangeS:" destination="PXz-wK-jXJ" eventType="valueChanged" id="3oR-kb-jcp"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Slider" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKl-Ap-vrp">
-                                <rect key="frame" x="20" y="163" width="560" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Slider" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKl-Ap-vrp">
+                                <rect key="frame" x="20" y="154" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P9B-32-P2x">
-                                <rect key="frame" x="20" y="192" width="560" height="197"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P9B-32-P2x">
+                                <rect key="frame" x="20" y="183" width="560" height="197"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="197" id="zXr-R1-CQz"/>
@@ -75,21 +78,21 @@
                                     <outlet property="delegate" destination="PXz-wK-jXJ" id="xbh-DC-xjg"/>
                                 </connections>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="DKc-jc-eCo">
-                                <rect key="frame" x="282" y="397" width="37" height="37"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="DKc-jc-eCo">
+                                <rect key="frame" x="282" y="388" width="37" height="37"/>
                                 <color key="backgroundColor" red="0.0078431372550000003" green="0.66666666669999997" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="color" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7CK-hs-YBq">
-                                <rect key="frame" x="327" y="401" width="105" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7CK-hs-YBq">
+                                <rect key="frame" x="327" y="392" width="105" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.54901960780000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Stop Animating"/>
                                 <connections>
                                     <action selector="onButtonStopAnimation:" destination="PXz-wK-jXJ" eventType="touchUpInside" id="Bru-EB-obW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6Z-Ro-DXA">
-                                <rect key="frame" x="167" y="401" width="107" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6Z-Ro-DXA">
+                                <rect key="frame" x="167" y="392" width="107" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.54901960780000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Start Animation"/>
                                 <connections>
@@ -102,7 +105,6 @@
                             <constraint firstAttribute="trailingMargin" secondItem="LKl-Ap-vrp" secondAttribute="trailing" id="0Tq-gG-MT6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0yy-4B-A50" secondAttribute="trailing" id="12A-qM-OWg"/>
                             <constraint firstItem="DKc-jc-eCo" firstAttribute="top" secondItem="P9B-32-P2x" secondAttribute="bottom" constant="8" id="3Rk-7q-fKe"/>
-                            <constraint firstItem="DKc-jc-eCo" firstAttribute="centerX" secondItem="P9B-32-P2x" secondAttribute="centerX" id="5r8-cb-oBP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="P9B-32-P2x" secondAttribute="trailing" id="6FT-Jh-RTK"/>
                             <constraint firstItem="pUj-7o-KOu" firstAttribute="top" secondItem="2i8-gH-yig" secondAttribute="bottom" constant="8" id="J67-2U-7YX"/>
                             <constraint firstAttribute="leadingMargin" secondItem="pUj-7o-KOu" secondAttribute="leading" id="Kjf-wg-i5V"/>
@@ -113,6 +115,7 @@
                             <constraint firstItem="a6Z-Ro-DXA" firstAttribute="top" secondItem="P9B-32-P2x" secondAttribute="bottom" constant="12" id="XnU-MG-iOV"/>
                             <constraint firstAttribute="leadingMargin" secondItem="P9B-32-P2x" secondAttribute="leading" id="cxx-GS-LDi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pUj-7o-KOu" secondAttribute="trailing" id="eZH-E0-2nk"/>
+                            <constraint firstItem="DKc-jc-eCo" firstAttribute="centerX" secondItem="i7O-Ze-aBY" secondAttribute="centerX" id="foF-Ih-TPd"/>
                             <constraint firstItem="4i9-Js-HJ6" firstAttribute="top" secondItem="Loa-w1-DoM" secondAttribute="bottom" constant="28" id="hv9-FM-9sM"/>
                             <constraint firstItem="DKc-jc-eCo" firstAttribute="leading" secondItem="a6Z-Ro-DXA" secondAttribute="trailing" constant="8" id="kTW-B6-BKu"/>
                             <constraint firstItem="mVz-bZ-aXs" firstAttribute="top" secondItem="0yy-4B-A50" secondAttribute="bottom" constant="20" id="mjD-Bo-1rB"/>
@@ -130,7 +133,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rxQ-gm-PPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="934" y="416"/>
+            <point key="canvasLocation" x="632" y="395"/>
         </scene>
     </scenes>
 </document>

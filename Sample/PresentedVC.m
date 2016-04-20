@@ -44,13 +44,13 @@
 -(IBAction)onShowOnTopOfPresentedVCPressed:(id)sender
 {
     CustomAlert *myAlert = (CustomAlert*) [CustomAlert makeAnAlert:@"custom_alert"];
-    [myAlert showOn:self];
+    [myAlert showOn:self WithAnimation:SHOW_WITH_FADE_IN];
 }
 
 -(IBAction)onShowOnTopOfNavigationOfPresentedVCPressed:(id)sender
 {
     CustomAlert *myAlert = (CustomAlert*) [CustomAlert makeAnAlert:@"custom_alert"];
-    [myAlert showOn:self.parentViewController];
+    [myAlert showOn:self.parentViewController WithAnimation:SHOW_WITH_DAMPING];
 }
 
 

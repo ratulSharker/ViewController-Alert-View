@@ -42,13 +42,17 @@
 {
     NSLog(@"show on");
     CustomAlert *myAlert = (CustomAlert*) [CustomAlert makeAnAlert:@"custom_alert"];
-    [myAlert showOn:self];
+    [myAlert showOn:self WithAnimation:SHOW_WITH_DAMPING];
 }
 
 -(IBAction)onShowOnTopOfTabbar:(id)sender
 {
     CustomAlert *myAlert = (CustomAlert*) [CustomAlert makeAnAlert:@"custom_alert"];
-    [myAlert showOn:self.parentViewController];
+    [myAlert showOn:self.parentViewController WithAnimation:SHOW_WITH_DAMPING];
+    
+    [myAlert hideAutomaticallyAfter:3.0 withAnimation:HIDE_WITH_DAMPING onComplete:^{
+        NSLog(@"hiding done");
+    }];
 }
 
 -(IBAction)onPushAVCOnRootNavPressed:(id)sender
