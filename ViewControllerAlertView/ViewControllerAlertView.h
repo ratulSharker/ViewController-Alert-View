@@ -1,6 +1,5 @@
 //
 //  ViewControllerAlertView.h
-//  Ajura
 //
 //  Created by Ratul Sharker on 1/28/16.
 //  Copyright © 2016 REVE Systems. All rights reserved.
