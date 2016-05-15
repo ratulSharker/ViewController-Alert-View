@@ -182,13 +182,15 @@
 #pragma mark show methods
 -(void)showOnWithDamping:(UIViewController*)alertHolder
 {
+    //initially disable the both view controller
+    alertHolder.view.userInteractionEnabled = self.view.userInteractionEnabled = NO;
+    
     //set initial frame
     CGRect originalFrame = self.view.frame;
     CGRect initialFrame = CGRectMake(originalFrame.origin.x,
                                      originalFrame.origin.y,
                                      originalFrame.size.width,
                                      originalFrame.size.height);
-    
     initialFrame.origin.y = alertHolder.view.bounds.size.height;
     
     self.view.frame = initialFrame;
@@ -222,13 +224,18 @@
                             )
                          {
                              [self.vcavDelegate viewControllerAlertViewDidAppear:self];
-                             
                          }
+                         
+                         //now enable the both view controller
+                         alertHolder.view.userInteractionEnabled = self.view.userInteractionEnabled = YES;
                      }];
 }
 
 -(void)showOnWithFadeIn:(UIViewController*)alertHolder
 {
+    //initially disable the both view controller
+    alertHolder.view.userInteractionEnabled = self.view.userInteractionEnabled = NO;
+    
     //set initial frame
     CGRect originalFrame = self.view.frame;
     
@@ -255,11 +262,17 @@
                              [self.vcavDelegate viewControllerAlertViewDidAppear:self];
                              
                          }
+                         
+                         //now enable the both view controller
+                         alertHolder.view.userInteractionEnabled = self.view.userInteractionEnabled = YES;
                      }];
 }
 
 -(void)showOnWithJumpIn:(UIViewController*)alertHolder
 {
+    //initially disable the both view controller
+    alertHolder.view.userInteractionEnabled = self.view.userInteractionEnabled = NO;
+    
     //set initial frame
     CGRect originalFrame = self.view.frame;
     CGRect initialFrame = CGRectMake(originalFrame.origin.x,
@@ -315,12 +328,17 @@
                              [self.vcavDelegate viewControllerAlertViewDidAppear:self];
                              
                          }
+                         
+                         //now enable the both view controller
+                         alertHolder.view.userInteractionEnabled = self.view.userInteractionEnabled = YES;
                      }];
 }
 
 #pragma mark hide methods
 -(void)hideWithDamping:(void(^)(void))completion
 {
+    //initially disable the both view controller
+    currentAlertHolder.view.userInteractionEnabled = self.view.userInteractionEnabled = NO;
     
     if(currentAlertHolder)
     {
@@ -368,6 +386,8 @@
                     completion();
                 }
                 
+                //now enable the both view controller
+                currentAlertHolder.view.userInteractionEnabled = self.view.userInteractionEnabled = YES;
             }
         }];
     }
@@ -375,6 +395,9 @@
 
 -(void)hideWithFadeOut:(void(^)(void))completion
 {
+    //initially disable the both view controller
+    currentAlertHolder.view.userInteractionEnabled = self.view.userInteractionEnabled = NO;
+    
     if(currentAlertHolder)
     {
         //call delegate that this view controller is about to hide
@@ -411,6 +434,9 @@
                 {
                     completion();
                 }
+                
+                //now enable the both view controller
+                currentAlertHolder.view.userInteractionEnabled = self.view.userInteractionEnabled = NO;
             }
         }];
     }
@@ -419,6 +445,9 @@
 
 -(void)hideWithJumpOut:(void(^)(void))completion
 {
+    //initially disable the both view controller
+    currentAlertHolder.view.userInteractionEnabled = self.view.userInteractionEnabled = NO;
+    
     if(currentAlertHolder)
     {
         //call delegate that this view controller is about to hide
@@ -467,6 +496,9 @@
                                  {
                                      completion();
                                  }
+                                 
+                                 //now enable the both view controller
+                                 currentAlertHolder.view.userInteractionEnabled = self.view.userInteractionEnabled = YES;
                              }
                          }];
     }
