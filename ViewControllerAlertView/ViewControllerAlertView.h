@@ -31,6 +31,9 @@ enum PREDEFINED_ANIMATION
     
     SHOW_WITH_FADE_IN,
     HIDE_WITH_FADE_OUT,
+    
+    SHOW_WITH_JUMP_IN,
+    HIDE_WITH_JUMP_OUT
 };
 
 /*______________________________________________________
@@ -128,6 +131,25 @@ typedef void (^ViewControllerAlertViewCompletionBlok)();
 */
 +(ViewControllerAlertView*)makeAnAlert:(NSString*)storyboardName;
 
+
+/*______________________________________________________
+ |                                                      |
+ |  this method is in effect whenever the `jump in` or  |
+ |  `jump out` animation param are in use. the param    |
+ |  `jumpPoint` dictate the point from which point or   |
+ |  to which point the whole alert will `jump in` or    |
+ |  `jump out` to.                                      |
+ |                                                      |
+ |  in order not to use this feature don't need to      |
+ |  call this method. It will `jump in` or `jump out`   |
+ |  from or to center of the alertHolder.               |
+ |                                                      |
+ |  in case once you enabled this feature & don't want  |
+ |  the feature after all, just call this method with   |
+ |  arbitrary point with the `useJumpPoint` `NO` value. |
+ |______________________________________________________|
+ */
+-(void)setJumpInOutAnimationPoint:(CGPoint)jumpPoint shouldUseCustomJumpPoint:(BOOL)useJumpPoint;
 
 /*______________________________________________________
  |                                                      |

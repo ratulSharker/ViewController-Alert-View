@@ -17,7 +17,17 @@
 
 @implementation ViewControllerAlertView
 {
+    
     UIViewController *currentAlertHolder;
+    
+    //
+    //  This jumpPoint point is the point
+    //  which is used in case of jump in animation.
+    //
+    //  In future it may be used in further animation
+    //
+    CGPoint jumpPoint;
+    BOOL    useCustomJumpPoint;
     
     
     //
@@ -49,6 +59,12 @@
                                                          bundle:[NSBundle mainBundle]];
     
     return (ViewControllerAlertView*)[storyboard instantiateInitialViewController];
+}
+
+-(void)setJumpInOutAnimationPoint:(CGPoint)jp shouldUseCustomJumpPoint:(BOOL)useJP
+{
+    jumpPoint = jp;
+    useCustomJumpPoint = useJP;
 }
 
 -(void)showOn:(UIViewController*)alertHolder WithAnimation:(enum PREDEFINED_ANIMATION)anim
@@ -83,6 +99,11 @@
             [self showOnWithFadeIn:alertHolder];
         }
             break;
+        case SHOW_WITH_JUMP_IN:
+        {
+            [self showOnWithJumpIn:alertHolder];
+        }
+            break;
             
         case HIDE_WITH_DAMPING:
         case HIDE_WITH_FADE_OUT:
@@ -101,12 +122,17 @@
     {
         case HIDE_WITH_DAMPING:
         {
-            [self hideWithDampingWithCompletion:completion];
+            [self hideWithDamping:completion];
         }
             break;
         case HIDE_WITH_FADE_OUT:
         {
             [self hideWithFadeOut:completion];
+        }
+            break;
+        case HIDE_WITH_JUMP_OUT:
+        {
+            [self hideWithJumpOut:completion];
         }
             break;
             
@@ -123,12 +149,20 @@
                 withAnimation:(enum PREDEFINED_ANIMATION)anim
                    onComplete:(ViewControllerAlertViewCompletionBlok)completion
 {
+    //
+    //  incase of no completion block passed or nil passed, dummy completion block is meant to be passed
+    //
+    ViewControllerAlertViewCompletionBlok dummyBlock=^{
+    };
+    
     [NSTimer scheduledTimerWithTimeInterval:hidingTime
                                      target:self
                                    selector:@selector(hidingTimerExpired:)
                                    userInfo:@{
-                                                VIEWCONTROLLER_TIMER_USERINFO_ANIMATION_KEY: [NSNumber numberWithInt:anim],
-                                                VIEWCONTROLLER_TIMER_USERINFO_COMPLETION_KEY : completion
+                                              
+                                              
+                                              VIEWCONTROLLER_TIMER_USERINFO_ANIMATION_KEY: [NSNumber numberWithInt:anim],
+                                              VIEWCONTROLLER_TIMER_USERINFO_COMPLETION_KEY : ((completion != nil) ? completion : dummyBlock)
                                               }
                                     repeats:NO];
 }
@@ -144,6 +178,8 @@
 */
 
 #pragma mark private factory default animator function
+
+#pragma mark show methods
 -(void)showOnWithDamping:(UIViewController*)alertHolder
 {
     //set initial frame
@@ -191,7 +227,99 @@
                      }];
 }
 
--(void)hideWithDampingWithCompletion:(void(^)(void))completion
+-(void)showOnWithFadeIn:(UIViewController*)alertHolder
+{
+    //set initial frame
+    CGRect originalFrame = self.view.frame;
+    
+    self.view.frame = originalFrame;
+    self.view.backgroundColor = [UIColor colorWithRed:50.0/255.0
+                                                green:50.0/255.0
+                                                 blue:50.0/255.0
+                                                alpha:0.85];
+    self.view.alpha = 0.0;
+    [alertHolder.view addSubview:self.view];
+    
+    [UIView animateWithDuration:1.0
+                     animations:^{
+                         
+                         self.view.alpha = 1.0;
+                         
+                     } completion:^(BOOL finshed){
+                         //call delegate that this view controller is shown
+                         
+                         if(self.vcavDelegate &&
+                            [self.vcavDelegate respondsToSelector:(@selector(viewControllerAlertViewDidAppear:))]
+                            )
+                         {
+                             [self.vcavDelegate viewControllerAlertViewDidAppear:self];
+                             
+                         }
+                     }];
+}
+
+-(void)showOnWithJumpIn:(UIViewController*)alertHolder
+{
+    //set initial frame
+    CGRect originalFrame = self.view.frame;
+    CGRect initialFrame = CGRectMake(originalFrame.origin.x,
+                                     originalFrame.origin.y,
+                                     originalFrame.size.width,
+                                     originalFrame.size.height);
+    
+    
+    self.view.frame = initialFrame;
+    self.view.clipsToBounds = YES;
+    
+    //
+    //  coming from arbitrary location
+    //
+    if(useCustomJumpPoint)
+    {
+        self.view.center = jumpPoint;
+    }
+    
+    
+    [alertHolder.view addSubview:self.view];
+    
+    CALayer *viewLayer = self.view.layer;
+    viewLayer.transform = CATransform3DMakeScale(0, 0, 0);  //from the back coming like a projectile
+    //layer.transform = CATransform3DMakeScale(1, 0, 1);  //opening like old television  (horizontally)
+    //layer.transform = CATransform3DMakeScale(0, 1, 1);  //opening like twisted curtain (vertically)
+    
+    [UIView animateWithDuration:1.0
+                     animations:^{
+                         
+                         //layer.transform = translationTransform;
+                         viewLayer.transform = CATransform3DIdentity;
+                         self.view.center = CGPointMake(CGRectGetMidX(originalFrame),
+                                                        CGRectGetMidY(originalFrame));
+                         
+                     } completion:^(BOOL finshed){
+                         //call delegate that this view controller is shown
+                         
+                         [UIView animateWithDuration:0.3
+                                          animations:^{
+                                              self.view.backgroundColor = [UIColor colorWithRed:50.0/255.0
+                                                                                          green:50.0/255.0
+                                                                                           blue:50.0/255.0
+                                                                                          alpha:0.85];
+                                          }];
+                         
+                         
+                         
+                         if(self.vcavDelegate &&
+                            [self.vcavDelegate respondsToSelector:(@selector(viewControllerAlertViewDidAppear:))]
+                            )
+                         {
+                             [self.vcavDelegate viewControllerAlertViewDidAppear:self];
+                             
+                         }
+                     }];
+}
+
+#pragma mark hide methods
+-(void)hideWithDamping:(void(^)(void))completion
 {
     
     if(currentAlertHolder)
@@ -209,7 +337,12 @@
         
         self.view.backgroundColor = [UIColor clearColor];
         
-        [UIView animateWithDuration:1.0 delay:0.1 usingSpringWithDamping:0.4 initialSpringVelocity:0.1 options:UIViewAnimationCurveLinear animations:^{
+        [UIView animateWithDuration:1.0
+                              delay:0.1
+             usingSpringWithDamping:0.4
+              initialSpringVelocity:0.1
+                            options:UIViewAnimationCurveLinear
+                         animations:^{
             
             self.view.frame = animatedFrame;
             
@@ -238,37 +371,6 @@
             }
         }];
     }
-}
-
--(void)showOnWithFadeIn:(UIViewController*)alertHolder
-{
-    //set initial frame
-    CGRect originalFrame = self.view.frame;
-    
-    self.view.frame = originalFrame;
-    self.view.backgroundColor = [UIColor colorWithRed:50.0/255.0
-                                                green:50.0/255.0
-                                                 blue:50.0/255.0
-                                                alpha:0.85];
-    self.view.alpha = 0.0;
-    [alertHolder.view addSubview:self.view];
-    
-    [UIView animateWithDuration:1.0
-                     animations:^{
-                         
-                         self.view.alpha = 1.0;
-                         
-                     } completion:^(BOOL finshed){
-                         //call delegate that this view controller is shown
-               
-                         if(self.vcavDelegate &&
-                            [self.vcavDelegate respondsToSelector:(@selector(viewControllerAlertViewDidAppear:))]
-                            )
-                         {
-                             [self.vcavDelegate viewControllerAlertViewDidAppear:self];
-                             
-                         }
-                     }];
 }
 
 -(void)hideWithFadeOut:(void(^)(void))completion
@@ -311,6 +413,62 @@
                 }
             }
         }];
+    }
+}
+
+
+-(void)hideWithJumpOut:(void(^)(void))completion
+{
+    if(currentAlertHolder)
+    {
+        //call delegate that this view controller is about to hide
+        if(self.vcavDelegate &&
+           [self.vcavDelegate respondsToSelector:(@selector(viewControllerAlertViewWillDisappear:))]
+           )
+        {
+            [self.vcavDelegate viewControllerAlertViewWillDisappear:self];
+        }
+        
+        CALayer *rootLayer = self.view.layer;
+        rootLayer.transform = CATransform3DIdentity;
+        
+        [UIView animateWithDuration:1.0
+                         animations:^{
+                             
+                             if(useCustomJumpPoint)
+                             {
+                                 self.view.center = jumpPoint;
+                             }
+                             
+                             
+                             //
+                             // there is a bug in ios
+                             //
+                             rootLayer.transform = CATransform3DMakeScale(0.00001, 0.00001, 0.00001);
+                             
+                         } completion:^(BOOL finished) {
+                             if(finished)
+                             {
+                                 [self removeFromParentViewController];
+                                 [self.view removeFromSuperview];
+                                 [self willMoveToParentViewController:nil];
+                                 
+                                 //call delegate that this view controller is shown
+                                 if(self.vcavDelegate &&
+                                    [self.vcavDelegate respondsToSelector:(@selector(viewControllerAlertViewDiddisappear:))]
+                                    )
+                                 {
+                                     [self.vcavDelegate viewControllerAlertViewDiddisappear:self];
+                                 }
+                                 
+                                 //  if there is something to do in completion
+                                 //  then execute it, otherwise just ignore
+                                 if(completion)
+                                 {
+                                     completion();
+                                 }
+                             }
+                         }];
     }
 }
 

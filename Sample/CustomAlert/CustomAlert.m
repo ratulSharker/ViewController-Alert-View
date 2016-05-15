@@ -118,7 +118,7 @@
     //
     //  hiding the customAlert, it's a method from the super class
     //
-    [self hideWithAnimation:HIDE_WITH_DAMPING onComplete:nil];
+    [self hideWithAnimation:HIDE_WITH_JUMP_OUT onComplete:nil];
 }
 
 -(IBAction)onSwitchValueChanged:(UISwitch*)sender

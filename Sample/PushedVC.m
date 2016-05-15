@@ -54,4 +54,15 @@
     [myAlert showOn:self.parentViewController.parentViewController WithAnimation:SHOW_WITH_DAMPING];
 }
 
+-(IBAction)showFromArbitaryJumpPosition:(UIButton*)sender
+{
+    CustomAlert *myAlert = (CustomAlert*)[CustomAlert makeAnAlert:@"custom_alert"];
+    
+    UITabBarController *tabbar = (UITabBarController*)self.parentViewController.parentViewController;
+    
+    CGPoint targetPoint = [self.view convertPoint:sender.center toView:tabbar.view];
+    [myAlert setJumpInOutAnimationPoint:targetPoint shouldUseCustomJumpPoint:YES];
+    [myAlert showOn:tabbar WithAnimation:SHOW_WITH_JUMP_IN];
+}
+
 @end
