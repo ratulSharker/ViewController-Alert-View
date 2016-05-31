@@ -436,7 +436,7 @@
                 }
                 
                 //now enable the both view controller
-                currentAlertHolder.view.userInteractionEnabled = self.view.userInteractionEnabled = NO;
+                currentAlertHolder.view.userInteractionEnabled = self.view.userInteractionEnabled = YES;
             }
         }];
     }
