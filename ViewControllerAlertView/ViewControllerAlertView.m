@@ -186,7 +186,7 @@
     alertHolder.view.userInteractionEnabled = self.view.userInteractionEnabled = NO;
     
     //set initial frame
-    CGRect originalFrame = self.view.frame;
+    CGRect originalFrame = alertHolder.view.frame;
     CGRect initialFrame = CGRectMake(originalFrame.origin.x,
                                      originalFrame.origin.y,
                                      originalFrame.size.width,
@@ -237,7 +237,7 @@
     alertHolder.view.userInteractionEnabled = self.view.userInteractionEnabled = NO;
     
     //set initial frame
-    CGRect originalFrame = self.view.frame;
+    CGRect originalFrame = alertHolder.view.frame;
     
     self.view.frame = originalFrame;
     self.view.backgroundColor = [UIColor colorWithRed:50.0/255.0
@@ -274,7 +274,7 @@
     alertHolder.view.userInteractionEnabled = self.view.userInteractionEnabled = NO;
     
     //set initial frame
-    CGRect originalFrame = self.view.frame;
+    CGRect originalFrame = alertHolder.view.frame;
     CGRect initialFrame = CGRectMake(originalFrame.origin.x,
                                      originalFrame.origin.y,
                                      originalFrame.size.width,
@@ -365,7 +365,7 @@
             self.view.frame = animatedFrame;
             
         } completion:^(BOOL finished) {
-            if(finished)
+            //if(finished)
             {
                 [self removeFromParentViewController];
                 [self.view removeFromSuperview];
@@ -414,7 +414,7 @@
                              self.view.alpha = 0.0;
             
         } completion:^(BOOL finished) {
-            if(finished)
+            //if(finished)
             {
                 [self removeFromParentViewController];
                 [self.view removeFromSuperview];
@@ -476,7 +476,7 @@
                              rootLayer.transform = CATransform3DMakeScale(0.00001, 0.00001, 0.00001);
                              
                          } completion:^(BOOL finished) {
-                             if(finished)
+                             //if(finished)
                              {
                                  [self removeFromParentViewController];
                                  [self.view removeFromSuperview];
@@ -511,7 +511,7 @@
        timer.userInfo)
     {
         
-        enum PREDEFINED_ANIMATION anim = [timer.userInfo[VIEWCONTROLLER_TIMER_USERINFO_ANIMATION_KEY] intValue];
+        enum PREDEFINED_ANIMATION anim = (enum PREDEFINED_ANIMATION)[timer.userInfo[VIEWCONTROLLER_TIMER_USERINFO_ANIMATION_KEY] intValue];
         ViewControllerAlertViewCompletionBlok completionBlock = timer.userInfo[VIEWCONTROLLER_TIMER_USERINFO_COMPLETION_KEY];
         
         //  now time to hide
