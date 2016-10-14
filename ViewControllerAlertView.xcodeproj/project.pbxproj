@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E730312D1CE85AB800833ECE /* RootPushedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E730312B1CE85AB800833ECE /* RootPushedVC.m */; };
+		E780ED311DB0BEE000BEC21F /* ViewControllerAlertViewDampingInOutAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E780ED301DB0BEE000BEC21F /* ViewControllerAlertViewDampingInOutAnimation.m */; };
+		E780ED341DB118FD00BEC21F /* ViewControllerAlertViewFadingInOutAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E780ED331DB118FD00BEC21F /* ViewControllerAlertViewFadingInOutAnimation.m */; };
 		E7B0637B1CAA492E0080D61A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B063701CAA492E0080D61A /* AppDelegate.m */; };
 		E7B0637C1CAA492E0080D61A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7B063711CAA492E0080D61A /* Assets.xcassets */; };
 		E7B0637D1CAA492E0080D61A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7B063731CAA492E0080D61A /* LaunchScreen.storyboard */; };
@@ -25,6 +27,12 @@
 /* Begin PBXFileReference section */
 		E730312B1CE85AB800833ECE /* RootPushedVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootPushedVC.m; path = Sample/RootPushedVC.m; sourceTree = SOURCE_ROOT; };
 		E730312C1CE85AB800833ECE /* RootPushedVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootPushedVC.h; path = Sample/RootPushedVC.h; sourceTree = SOURCE_ROOT; };
+		E780ED2D1DB0B6F700BEC21F /* ViewControllerAlertViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewControllerAlertViewDelegate.h; sourceTree = "<group>"; };
+		E780ED2E1DB0B8E300BEC21F /* ViewControllerAlertViewTransitionAnimtationDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewControllerAlertViewTransitionAnimtationDelegate.h; sourceTree = "<group>"; };
+		E780ED2F1DB0BEE000BEC21F /* ViewControllerAlertViewDampingInOutAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerAlertViewDampingInOutAnimation.h; sourceTree = "<group>"; };
+		E780ED301DB0BEE000BEC21F /* ViewControllerAlertViewDampingInOutAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerAlertViewDampingInOutAnimation.m; sourceTree = "<group>"; };
+		E780ED321DB118FD00BEC21F /* ViewControllerAlertViewFadingInOutAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerAlertViewFadingInOutAnimation.h; sourceTree = "<group>"; };
+		E780ED331DB118FD00BEC21F /* ViewControllerAlertViewFadingInOutAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerAlertViewFadingInOutAnimation.m; sourceTree = "<group>"; };
 		E7956C241CAA48B6006B7C2A /* ViewControllerAlertView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViewControllerAlertView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7B0636F1CAA492E0080D61A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Sample/AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		E7B063701CAA492E0080D61A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Sample/AppDelegate.m; sourceTree = SOURCE_ROOT; };
@@ -109,8 +117,11 @@
 		E7B063821CAA493E0080D61A /* ViewControllerAlertView */ = {
 			isa = PBXGroup;
 			children = (
+				E7DA87C91DA6543300248D45 /* DefaultAnimations */,
 				E7B063831CAA493E0080D61A /* ViewControllerAlertView.h */,
 				E7B063841CAA493E0080D61A /* ViewControllerAlertView.m */,
+				E780ED2D1DB0B6F700BEC21F /* ViewControllerAlertViewDelegate.h */,
+				E780ED2E1DB0B8E300BEC21F /* ViewControllerAlertViewTransitionAnimtationDelegate.h */,
 			);
 			path = ViewControllerAlertView;
 			sourceTree = "<group>";
@@ -125,6 +136,17 @@
 			name = CustomAlert;
 			path = Sample/CustomAlert;
 			sourceTree = SOURCE_ROOT;
+		};
+		E7DA87C91DA6543300248D45 /* DefaultAnimations */ = {
+			isa = PBXGroup;
+			children = (
+				E780ED2F1DB0BEE000BEC21F /* ViewControllerAlertViewDampingInOutAnimation.h */,
+				E780ED301DB0BEE000BEC21F /* ViewControllerAlertViewDampingInOutAnimation.m */,
+				E780ED321DB118FD00BEC21F /* ViewControllerAlertViewFadingInOutAnimation.h */,
+				E780ED331DB118FD00BEC21F /* ViewControllerAlertViewFadingInOutAnimation.m */,
+			);
+			path = DefaultAnimations;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -203,6 +225,8 @@
 				E7B0638D1CAA4A790080D61A /* CustomAlert.m in Sources */,
 				E7B063931CAA89D40080D61A /* PushedVC.m in Sources */,
 				E7B0637B1CAA492E0080D61A /* AppDelegate.m in Sources */,
+				E780ED311DB0BEE000BEC21F /* ViewControllerAlertViewDampingInOutAnimation.m in Sources */,
+				E780ED341DB118FD00BEC21F /* ViewControllerAlertViewFadingInOutAnimation.m in Sources */,
 				E7B063851CAA493E0080D61A /* ViewControllerAlertView.m in Sources */,
 				E7B063811CAA492E0080D61A /* DirectVC.m in Sources */,
 				E730312D1CE85AB800833ECE /* RootPushedVC.m in Sources */,

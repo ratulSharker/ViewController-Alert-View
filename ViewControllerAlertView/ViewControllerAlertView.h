@@ -6,15 +6,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ViewControllerAlertViewDelegate.h"
+#import "ViewControllerAlertViewTransitionAnimtationDelegate.h"
 
-/*______________________________________________________
- |                                                      |
- |  Forward declaration of the ViewControllerAlertView  |
- |  class because we are about to use this class        |
- |  type in the ViewControllerAlertViewDelegate         |
- |______________________________________________________|
-*/
-@class ViewControllerAlertView;
+//
+//  default animtation implementation
+//
+#import "ViewControllerAlertViewDampingInOutAnimation.h"
+#import "ViewControllerAlertViewFadingInOutAnimation.h"
 
 
 /*______________________________________________________
@@ -36,71 +35,7 @@ enum PREDEFINED_ANIMATION
     HIDE_WITH_JUMP_OUT
 };
 
-/*______________________________________________________
- |                                                      |
- |  Completion block declaration to be used in          |
- |  automatically hideout or showup methods.            |
- |______________________________________________________|
-*/
-typedef void (^ViewControllerAlertViewCompletionBlok)();
 
-
-/*______________________________________________________
- |                                                      |
- |  Declaration of the ViewControllerAlertViewDelegate, |
- |  which can be used for various state change of the   |
- |  subclassed "YourCustomAlertView" from the           |
- |  ViewControllerAlertView. All it's protocol methods  |
- |  are optional                                        |
- |______________________________________________________|
-*/
-@protocol ViewControllerAlertViewDelegate <NSObject>
-@optional
-/*__________________________________________________________________________________
- |                                                                                  |
- |  "viewControllerAlertViewWillAppear:" is meant to called when the subclassed     |
- |  "YourCustomAlertView's" showup animation is about to start. To be specific      |
- |  its called before the animation started. A ViewControllerAlertView object is    |
- |  passed to determine for which ViewControllerAlertView this particular delegate  |
- |  is called.                                                                      |
- |__________________________________________________________________________________|
-*/
--(void)viewControllerAlertViewWillAppear    :(ViewControllerAlertView*)vcav;
-
-/*__________________________________________________________________________________
- |                                                                                  |
- |  "viewControllerAlertViewDidAppear:" is meant to called when the subclassed      |
- |  "YourCustomAlertView's" showup animation ended. To be specific its              |
- |  called just after the animation completed. A ViewControllerAlertView object is  |
- |  passed to determine for which ViewControllerAlertView this particular delegate  |
- |  is called.                                                                      |
- |__________________________________________________________________________________|
-*/
--(void)viewControllerAlertViewDidAppear     :(ViewControllerAlertView*)vcav;
-
-/*______________________________________________________________________________________
- |                                                                                      |
- |  "viewControllerAlertViewWillDisappear:" is meant to called when the subclassed      |
- |  "YourCustomAlertView's" hideout animation about to start. To be specific its        |
- |  called just after the animation completed. A ViewControllerAlertView object is      |
- |  passed to determine for which ViewControllerAlertView this particular delegate      |
- |  is called.                                                                          |
- |______________________________________________________________________________________|
-*/
--(void)viewControllerAlertViewWillDisappear :(ViewControllerAlertView*)vcav;
-
-/*______________________________________________________________________________________
- |                                                                                      |
- |  "viewControllerAlertViewDiddisappear:" is meant to called when the subclassed       |
- |  "YourCustomAlertView's" hideout animation ended. To be specific its                 |
- |  called just after the animation completed. A ViewControllerAlertView object is      |
- |  passed to determine for which ViewControllerAlertView this particular delegate      |
- |  is called.                                                                          |
- |______________________________________________________________________________________|
-*/
--(void)viewControllerAlertViewDiddisappear  :(ViewControllerAlertView*)vcav;
-
-@end
 
 
 
@@ -122,6 +57,10 @@ typedef void (^ViewControllerAlertViewCompletionBlok)();
 */
 @property  (strong) id<ViewControllerAlertViewDelegate> vcavDelegate;
 
+/*
+    TODO write the documentation
+ */
+@property  (strong) id<ViewControllerAlertViewTransitionAnimationDelegate> transitionAnimationDelegate;
 
 /*______________________________________________________
  |                                                      |
@@ -177,7 +116,7 @@ typedef void (^ViewControllerAlertViewCompletionBlok)();
  |______________________________________________________________________________|
 */
 -(void)hideWithAnimation:(enum PREDEFINED_ANIMATION)anim
-              onComplete:(ViewControllerAlertViewCompletionBlok) completion;
+              onComplete:(ViewControllerAlertViewGeneralPurposeBlock)completion;
 
 /*__________________________________________________________________________________
  |                                                                                  |
@@ -192,5 +131,5 @@ typedef void (^ViewControllerAlertViewCompletionBlok)();
 */
 -(void)hideAutomaticallyAfter:(NSTimeInterval)hidingTime
                 withAnimation:(enum PREDEFINED_ANIMATION)anim
-                   onComplete:(ViewControllerAlertViewCompletionBlok)completion;
+                   onComplete:(ViewControllerAlertViewGeneralPurposeBlock)completion;
 @end

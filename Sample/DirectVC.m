@@ -50,9 +50,9 @@
 {
     CustomAlert *myAlert = (CustomAlert*) [CustomAlert makeAnAlert:@"custom_alert"];
     [myAlert showOn:self.parentViewController WithAnimation:SHOW_WITH_DAMPING];
-    [myAlert hideAutomaticallyAfter:3.0 withAnimation:HIDE_WITH_DAMPING onComplete:^{
-        NSLog(@"hiding done");
-    }];
+//    [myAlert hideAutomaticallyAfter:3.0 withAnimation:HIDE_WITH_DAMPING onComplete:^{
+//        NSLog(@"hiding done");
+//    }];
 }
 
 -(IBAction)onPushAVCOnRootNavPressed:(id)sender
